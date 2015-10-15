@@ -14,5 +14,7 @@ source ~/.profile
 
 alias nw="~/Applications/node-webkit.app/Contents/MacOS/node-webkit"
 alias sm="git pull upstream master && git push origin master"
+alias gpom="git pull origin master"
+alias gpum="git pull upstream master"
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH

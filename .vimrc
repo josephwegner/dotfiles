@@ -34,6 +34,7 @@ Plugin 'scrooloose/nerdtree'
 Bundle "pangloss/vim-javascript"
 Bundle "kchmck/vim-coffee-script"
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -75,3 +76,8 @@ imap <silent> <Leader>n :NERDTreeToggle<CR>
 
 " Line Numbers
 :set number
+
+" Set Color Scheme
+set background=dark
+colorscheme solarized
+

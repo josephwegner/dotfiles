@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="mh-custom"
+ZSH_THEME="mh"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -50,16 +50,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export GOPATH=$HOME/Code/go
-export PATH="/Users/josephwegner/.rvm/gems/ruby-2.0.0-p451@user_events_service/bin:/Users/josephwegner/.rvm/gems/ruby-2.0.0-p451@global/bin:/Users/josephwegner/.rvm/rubies/ruby-2.0.0-p451/bin:/Users/josephwegner/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/MacGPG2/bin:/usr/local/go/bin:$GOPATH/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
-
-# Run direnv
-eval "$(direnv hook zsh)"
-
-# Read .rvmrc
-rvm_project_rvmrc=1
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -88,6 +79,9 @@ export EDITOR='vim'
 # Porting over stuff from .bash_profile
 
 alias sm="git pull upstream master && git push origin master"
+alias gpom="git pull origin master"
+alias gpum="git pull upstream master"
+alias done_notify="osascript -e 'display notification \"A thing is done\" with title \"Hey you!\"'"
 export ANDROID_HOME="/Applications/android-sdk"
 
 # DuckDuckHack Setup
@@ -107,3 +101,22 @@ preexec() {
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/josephwegner/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
+
+PERL_MB_OPT="--install_base \"/Users/josephwegner/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/josephwegner/perl5"; export PERL_MM_OPT;
+
+# Prompt Command
+DISABLE_AUTO_TITLE="true"
+precmd () {
+  echo -ne "\e]2;${PWD/${HOME}/\~}\a"
+  echo -ne "\e]1;${PWD##*/}\a"
+}
+preexec() {
+  echo -ne "\e]1;${PWD##*/}/${1[(wr)^(*=*|sudo|ssh|rake|-*)]:gs/%/%%}\a"
+}
+
+# rbenv
+eval "$(rbenv init -)"
+
+# set ulimit for grunt watches
+# ulimt -n 1024
