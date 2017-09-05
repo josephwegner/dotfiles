@@ -82,10 +82,6 @@ alias sm="git pull upstream master && git push origin master"
 alias gpom="git pull origin master"
 alias gpum="git pull upstream master"
 alias done_notify="osascript -e 'display notification \"A thing is done\" with title \"Hey you!\"'"
-export ANDROID_HOME="/Applications/android-sdk"
-
-# DuckDuckHack Setup
-eval $(perl -I${HOME}/perl5/lib/perl5 -Mlocal::lib)
 
 # Prompt Command
 DISABLE_AUTO_TITLE="true"
@@ -97,13 +93,6 @@ preexec() {
   echo -ne "\e]1;${PWD##*/}/${1[(wr)^(*=*|sudo|ssh|rake|-*)]:gs/%/%%}\a"
 }
 
-# Docker Setup
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=/Users/josephwegner/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-
-PERL_MB_OPT="--install_base \"/Users/josephwegner/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/josephwegner/perl5"; export PERL_MM_OPT;
 
 # Prompt Command
 DISABLE_AUTO_TITLE="true"
@@ -120,3 +109,10 @@ eval "$(rbenv init -)"
 
 # set ulimit for grunt watches
 # ulimt -n 1024
+
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Setup pyenv
+eval "$(pyenv init -)"
+
+

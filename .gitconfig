@@ -1,3 +1,6 @@
 [user]
 	name = Joe Wegner
 	email = joe@wegnerdesign.com
+
+[diff "nodiff"]
+  command = /usr/bin/true
