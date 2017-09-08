@@ -74,7 +74,6 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 # Third Party Junk
-. `brew --prefix`/etc/profile.d/z.sh
 
 # Porting over stuff from .bash_profile
 
@@ -104,15 +103,10 @@ preexec() {
   echo -ne "\e]1;${PWD##*/}/${1[(wr)^(*=*|sudo|ssh|rake|-*)]:gs/%/%%}\a"
 }
 
-# rbenv
-eval "$(rbenv init -)"
-
 # set ulimit for grunt watches
 # ulimt -n 1024
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# Setup pyenv
-eval "$(pyenv init -)"
 
 

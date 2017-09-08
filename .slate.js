@@ -45,6 +45,20 @@ var windowLeft = slate.operation('throw', {
   screen: 'left'
 });
 
+var windowCutDown = slate.operation('move', {
+  x: 'windowTopLeftX',
+  y: 'windowTopLeftY+(windowSizeY/2)',
+  height: 'windowSizeY/2',
+  width: 'windowSizeX'
+});
+
+var windowCutUp = slate.operation('move', {
+  x: 'windowTopLeftX',
+  y: 'windowTopLeftY-(windowSizeY/2)',
+  height: 'windowSizeY/2',
+  width: 'windowSizeX'
+});
+
 // Quick app opens
 // 
 // set an index to false, if you don't want anything bound to that num
@@ -81,6 +95,9 @@ slate.bind('up:ctrl;cmd', halfTop)
 slate.bind('down:ctrl;cmd', halfBottom)
 slate.bind('right:ctrl;alt;cmd', windowRight);
 slate.bind('left:ctrl;alt;cmd', windowLeft);
+slate.bind('down:cmd', windowCutDown);
+slate.bind('up:cmd', windowCutUp);
+
 
 for(var i=0,max=appsToLaunch.length; i<max; i++) {
   var app = appsToLaunch[i];
