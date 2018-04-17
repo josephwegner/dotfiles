@@ -48,6 +48,7 @@ ZSH_THEME="mh"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+source ~/.heroku-aliases.sh
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -109,4 +110,17 @@ preexec() {
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
+# RVM setup
+source /Users/jwegner/.rvm/scripts/rvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# NVM setup
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Personal bin folder
+export PATH=$PATH:~/bin
+
+bindkey -v
+bindkey '^R' history-incremental-search-backward

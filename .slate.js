@@ -95,8 +95,8 @@ slate.bind('up:ctrl;cmd', halfTop)
 slate.bind('down:ctrl;cmd', halfBottom)
 slate.bind('right:ctrl;alt;cmd', windowRight);
 slate.bind('left:ctrl;alt;cmd', windowLeft);
-slate.bind('down:cmd', windowCutDown);
-slate.bind('up:cmd', windowCutUp);
+slate.bind('down:alt', windowCutDown);
+slate.bind('up:alt', windowCutUp);
 
 
 for(var i=0,max=appsToLaunch.length; i<max; i++) {
@@ -114,7 +114,7 @@ function isOpen(app) {
   var open = false;
 
   slate.eachApp(function (currApp) {
-    if(app.name() === app) {
+    if(app === currApp.name()) {
       open = true;
     }
   });
