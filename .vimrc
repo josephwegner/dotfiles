@@ -78,7 +78,6 @@ imap <silent> <Leader>n :NERDTreeToggle<CR>
 :set number
 
 " Set Color Scheme
-set background=dark
 colorscheme solarized
 
 " Customize NERDTree

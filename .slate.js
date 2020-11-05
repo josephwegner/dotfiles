@@ -68,8 +68,8 @@ var appsToLaunch = [
     path: '/Applications/iTerm.app'
   },
   {
-    name: 'Google Chrome',
-    path: '/Applications/Google Chrome.app'
+    name: 'Firefox',
+    path: '/Applications/Firefox.app'
   },
   {
     name: 'Slack',

@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="mh"
+ZSH_THEME="mh-custom"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -93,34 +93,26 @@ preexec() {
   echo -ne "\e]1;${PWD##*/}/${1[(wr)^(*=*|sudo|ssh|rake|-*)]:gs/%/%%}\a"
 }
 
-
-# Prompt Command
-DISABLE_AUTO_TITLE="true"
-precmd () {
-  echo -ne "\e]2;${PWD/${HOME}/\~}\a"
-  echo -ne "\e]1;${PWD##*/}\a"
-}
-preexec() {
-  echo -ne "\e]1;${PWD##*/}/${1[(wr)^(*=*|sudo|ssh|rake|-*)]:gs/%/%%}\a"
-}
-
 # set ulimit for grunt watches
 # ulimt -n 1024
-
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
 # RVM setup
 source /Users/jwegner/.rvm/scripts/rvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # NVM setup
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Personal bin folder
 export PATH=$PATH:~/bin
+
+# Python bin folder
+export PATH=$PATH:~/Library/Python/3.8/bin
+
+export GOPATH=$HOME/go
+export PATH=$PATH:/Users/jwegner/go/bin
 
 bindkey -v
 bindkey '^R' history-incremental-search-backward
