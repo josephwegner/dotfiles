@@ -1,0 +1,12 @@
+{
+	"ext": {
+		"shell": {
+			"colorscheme": "mine",
+			"theme": "mine",
+			"local_themes": {
+					"continuation": "continuation",
+					"select": "select"
+			}
+		}
+	}
+}

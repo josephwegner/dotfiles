@@ -48,7 +48,6 @@ ZSH_THEME="mh-custom"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.heroku-aliases.sh
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -109,7 +108,7 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$PATH:~/bin
 
 # Python bin folder
-export PATH=$PATH:~/Library/Python/3.8/bin
+export PATH=$PATH:~/Library/Python/3.9/bin
 
 export GOPATH=$HOME/go
 export PATH=$PATH:/Users/jwegner/go/bin

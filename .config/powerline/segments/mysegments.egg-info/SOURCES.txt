@@ -1,0 +1,7 @@
+setup.py
+mysegments/__init__.py
+mysegments/shell.py
+mysegments.egg-info/PKG-INFO
+mysegments.egg-info/SOURCES.txt
+mysegments.egg-info/dependency_links.txt
+mysegments.egg-info/top_level.txt

@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: mysegments
+Version: 0.0.1
+Summary: My custom Powerline segments.
+Home-page: UNKNOWN
+Author: Joe Wegner
+Author-email: joe@joewegner.com
+License: UNKNOWN
+Description: A long description for the package that includes the custom segments.
+Platform: UNKNOWN
+Description-Content-Type: text/plain

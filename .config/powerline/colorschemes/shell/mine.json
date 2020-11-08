@@ -1,0 +1,17 @@
+{
+	"name": "Mine",
+  "colors": {
+    "bg": "002833"
+  },
+	"groups": {
+		"mode": { "fg": "solarized:base3", "bg": "solarized:green", "attrs": ["bold"] },
+    "transparent": { "fg": "solarized:base03", "bg": "solarized:base03" }
+	},
+	"mode_translations": {
+		"vicmd": {
+			"groups": {
+				"mode": { "fg": "solarized:base3", "bg": "solarized:blue", "attrs": ["bold"] }
+			}
+		}
+	}
+}

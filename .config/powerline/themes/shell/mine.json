@@ -1,0 +1,61 @@
+{
+	"segments": {
+    "above": [
+      {
+        "left": [
+          {
+            "function": "powerline.segments.common.time.date",
+            "args": {
+              "format": "%m-%d %H:%M"
+            }
+          },
+          {
+            "function": "powerline.segments.shell.cwd",
+            "priority": 10,
+            "args": {
+              "dir_limit_depth": 2
+            }
+          }
+        ]
+      },
+      {
+        "left": [
+          {
+            "type": "string",
+            "contents": "",
+            "highlight_groups": ["transparent"]
+          }
+        ]
+      }
+    ],
+		"left": [
+			{
+				"function": "powerline.segments.shell.mode",
+        "args": {
+          "override": {
+            "viins": "➜",
+            "vicmd": "!"
+          }
+        }
+			},
+			{
+				"function": "powerline.segments.shell.jobnum",
+				"priority": 20
+			}
+		],
+		"right": [
+			{
+				"function": "mysegments.shell.last_pipe_status",
+				"priority": 10
+			},
+			{
+				"function": "powerline.segments.common.vcs.stash",
+				"priority": 50
+			},
+			{
+				"function": "powerline.segments.common.vcs.branch",
+				"priority": 40
+			}
+		]
+	}
+}
