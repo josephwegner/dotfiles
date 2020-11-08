@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+export PATH=$PATH:~/Library/Python/3.9/bin
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -108,8 +110,6 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$PATH:~/bin
 
 # Python bin folder
-export PATH=$PATH:~/Library/Python/3.9/bin
-
 export GOPATH=$HOME/go
 export PATH=$PATH:/Users/jwegner/go/bin
 
