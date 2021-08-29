@@ -1,8 +1,11 @@
 local appHotkeys = {
   "com.googlecode.iterm2",
-  "org.mozilla.firefox",
+--  "com.google.Chrome",
+  "com.vivaldi.Vivaldi",
   "com.tinyspeck.slackmacgap"
 }
+
+local appSwitchKeys = {"q", "w", "e", "r", "t", "y"}
 
 -- Bring popular applications to foreground
 local function focusApplication(id)
@@ -15,10 +18,14 @@ local function focusApplication(id)
   end
 end
 
-for k, id in ipairs(appHotkeys) do
-  print(k, i)
+for k, id in ipairs(hs.window.allWindows()) do
+  print(id:application():bundleID())
+end
 
-  hs.hotkey.bind({"ctrl"}, tostring(k), function() 
+for k, id in ipairs(appHotkeys) do
+  print(k, id)
+
+  hs.hotkey.bind({"ctrl", "tab"}, appSwitchKeys[k], function() 
     focusApplication(id)
   end)
 end
@@ -56,7 +63,7 @@ hs.hotkey.bind({"ctrl", "cmd"}, "right", function()
   local frame = window:screen():frame()
 
   frame.w = frame.w / 2
-  frame.x = frame.w
+  frame.x = frame.x2
 
   window:setFrame(frame, 0)
 end)
@@ -76,10 +83,11 @@ end)
 hs.hotkey.bind({"ctrl", "cmd"}, "down", function()
   local app = hs.application.frontmostApplication()
   local window = app:focusedWindow()
-  local frame = window:screen():frame()
+  local screenFrame = window:screen():frame()
+  local windowFrame = window:frame()
 
-  frame.h = frame.h / 2
-  frame.y = frame.h
+  windowFrame.h = screenFrame.h / 2
+  windowFrame.y = screenFrame.y + windowFrame.h
 
-  window:setFrame(frame, 0)
+  window:setFrame(windowFrame, 0)
 end)

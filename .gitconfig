@@ -4,3 +4,5 @@
 
 [diff "nodiff"]
   command = /usr/bin/true
+[init]
+	defaultBrach = main

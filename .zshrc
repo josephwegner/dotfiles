@@ -2,6 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 export PATH=$PATH:~/Library/Python/3.9/bin
+export PATH=$PATH:/usr/local/go/bin
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -97,10 +98,6 @@ preexec() {
 # set ulimit for grunt watches
 # ulimt -n 1024
 
-
-# RVM setup
-source /Users/jwegner/.rvm/scripts/rvm
-
 # NVM setup
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
@@ -108,6 +105,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Personal bin folder
 export PATH=$PATH:~/bin
+export PATH=$PATH:~/bin/node_modules/.bin
 
 # Python bin folder
 export GOPATH=$HOME/go
@@ -115,3 +113,11 @@ export PATH=$PATH:/Users/jwegner/go/bin
 
 bindkey -v
 bindkey '^R' history-incremental-search-backward
+
+source ~/.heroku-aliases.sh
+#export PATH=$HOME/graxsrc/jdk-11.0.6+10/Contents/Home/bin:$PATH
+#export PATH=$HOME/.bin/elasticsearch-6.8.0/bin:$PATH
+export GRAX_AWS_ROOT_PROFILE=prod-root
+export INSTANCE_FILTER="Name=tag:aws:cloudformation:stack-name,Values="
+# Have to use the base OS java for Data Loader... ugh
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
