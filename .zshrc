@@ -121,3 +121,4 @@ export GRAX_AWS_ROOT_PROFILE=prod-root
 export INSTANCE_FILTER="Name=tag:aws:cloudformation:stack-name,Values="
 # Have to use the base OS java for Data Loader... ugh
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+export PYTHONPATH=~/Library/Python/3.8/lib/python/site-packages

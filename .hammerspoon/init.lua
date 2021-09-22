@@ -1,11 +1,12 @@
 local appHotkeys = {
   "com.googlecode.iterm2",
 --  "com.google.Chrome",
-  "com.vivaldi.Vivaldi",
+--  "com.vivaldi.Vivaldi",
+  "org.mozilla.firefox",
   "com.tinyspeck.slackmacgap"
 }
 
-local appSwitchKeys = {"q", "w", "e", "r", "t", "y"}
+local appSwitchKeys = {"1", "2", "3", "4", "5", "6"}
 
 -- Bring popular applications to foreground
 local function focusApplication(id)
@@ -25,7 +26,7 @@ end
 for k, id in ipairs(appHotkeys) do
   print(k, id)
 
-  hs.hotkey.bind({"ctrl", "tab"}, appSwitchKeys[k], function() 
+  hs.hotkey.bind({"alt"}, appSwitchKeys[k], function() 
     focusApplication(id)
   end)
 end

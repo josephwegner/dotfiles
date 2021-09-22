@@ -26,10 +26,4 @@ def last_pipe_status(pl, segment_info):
 			for status in last_pipe_status
 		]
 	else:
-		return [
-			{
-				'contents': str("✓"),
-				'highlight_groups': ['exit_success'],
-				'draw_inner_divider': True
-			}
-		]
+		return None
