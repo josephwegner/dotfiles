@@ -6,3 +6,4 @@
   command = /usr/bin/true
 [init]
 	defaultBrach = main
+	templatedir = /Users/joseph.wegner/.git-templates

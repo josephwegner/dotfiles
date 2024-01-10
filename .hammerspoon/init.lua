@@ -1,12 +1,13 @@
 local appHotkeys = {
-  "com.googlecode.iterm2",
+    "com.culturedcode.ThingsMac",
+--  "com.googlecode.iterm2",
 --  "com.google.Chrome",
 --  "com.vivaldi.Vivaldi",
   "org.mozilla.firefox",
   "com.tinyspeck.slackmacgap"
 }
 
-local appSwitchKeys = {"1", "2", "3", "4", "5", "6"}
+local appSwitchKeys = {"q", "w", "e", "r", "t", "y"}
 
 -- Bring popular applications to foreground
 local function focusApplication(id)
@@ -26,10 +27,20 @@ end
 for k, id in ipairs(appHotkeys) do
   print(k, id)
 
-  hs.hotkey.bind({"alt"}, appSwitchKeys[k], function() 
+  hs.hotkey.bind({"cmd"}, appSwitchKeys[k], function() 
     focusApplication(id)
   end)
 end
+
+-- Toggle microphone mute
+hs.hotkey.bind({"alt"}, "/", function()
+  local device = hs.audiodevice.defaultInputDevice()
+  if device:muted() then
+    device:setMuted(false)
+  else
+    device:setMuted(true)
+  end
+end)
 
 -- Set focused window to full screen
 hs.hotkey.bind({"ctrl", "alt", "cmd"}, "up", function()
