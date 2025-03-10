@@ -101,6 +101,9 @@ preexec() {
 # set ulimit for grunt watches
 # ulimt -n 1024
 
+# Add brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Personal bin folder
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/bin/node_modules/.bin
