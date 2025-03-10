@@ -1,8 +1,58 @@
+function tprint(tbl, indent)
+  if not indent then indent = 0 end
+  local toprint = ""
+  for k, v in pairs(tbl) do
+    local formatting = string.rep("  ", indent) .. k .. ": "
+    if type(v) == "table" then
+      toprint = toprint .. formatting .. "\n" .. tprint(v, indent+1)
+    elseif type(v) == 'boolean' then
+      toprint = toprint .. formatting .. tostring(v) .. "\n"
+    else
+      toprint = toprint .. formatting .. tostring(v) .. "\n"
+    end
+  end
+  return toprint
+end
+
+-- load env file
+local home = os.getenv("HOME")
+local envvars = {}
+local function dotenv(filepath)
+  -- Open the file
+  local file = assert(io.open(filepath, "r"), "Failed to open file: " .. filepath)
+  
+  -- Read the file line by line
+  for line in file:lines() do
+      -- Trim whitespace from the line
+      line = line:match("^%s*(.-)%s*$")
+      
+      -- Skip empty lines and comments
+      if line ~= "" and line:sub(1, 1) ~= "#" then
+          -- Split the line into key and value
+          local key, value = line:match("([^=]+)=(.*)")
+          
+          if key and value then
+              -- Trim quotes from the value if present
+              value = value:match("^[\"'](.-)[\"\']$") or value
+              
+              -- Set the environment variable
+              envvars[key] = value
+          end
+      end
+  end
+  
+  -- Close the file
+  file:close()
+end
+dotenv(home .. '/.config/.openai')
+
+local function setTaskEnv(task)
+  task:setEnvironment(envvars)
+end
+
 local appHotkeys = {
     "com.culturedcode.ThingsMac",
 --  "com.googlecode.iterm2",
---  "com.google.Chrome",
---  "com.vivaldi.Vivaldi",
   "org.mozilla.firefox",
   "com.tinyspeck.slackmacgap"
 }
@@ -16,7 +66,16 @@ local function focusApplication(id)
   if app == nil then
     hs.application.open(id)
   else
-    app:activate()
+    if id == "com.tinyspeck.slackmacgap" then
+      mainWindow = app:findWindow("Main")
+      if mainWindow == nil then
+        app:activate()
+      else
+        mainWindow:focus()
+      end
+    else
+      app:activate()
+    end
   end
 end
 
@@ -32,14 +91,55 @@ for k, id in ipairs(appHotkeys) do
   end)
 end
 
--- Toggle microphone mute
-hs.hotkey.bind({"alt"}, "/", function()
-  local device = hs.audiodevice.defaultInputDevice()
-  if device:muted() then
-    device:setMuted(false)
-  else
-    device:setMuted(true)
+
+runAITool = function(runPath, callback, args)
+  if args == nil then
+    args = {}
   end
+
+  print("Run AI Tool: " .. home .. '/' .. runPath .. ' -- ' .. hs.inspect(args))
+
+  transcribedText = ""
+
+  local streamingCallback = function(task, stdOut, stdErr)
+    -- Accumulate the text instead of sending immediately
+    transcribedText = transcribedText .. stdOut
+    return true
+  end
+
+  local task = hs.task.new(
+    home .. '/' .. runPath,
+    function(exitCode, stdOut, stdErr)
+      if exitCode == 0 then
+        -- Only send the chat when the process completes successfully
+        callback(transcribedText)
+      else
+        print('error with AI tool', exitCode)
+        print(stdOut)
+        print(stdErr)
+        hs.notify.show('Local AI Utils - AI Error', stdOut, stdErr)
+      end
+    end,
+    streamingCallback,
+    args
+  )
+
+  setTaskEnv(task)
+  task:start()
+end
+
+
+hs.hotkey.bind({"cmd"}, "m", function()
+  local chatCallback = function(text)
+    print("Chat callback: ", text)
+    hs.notify.show("Local AI Utils", "", text)
+  end
+  
+  local sendChat = function(prompt)
+    runAITool("/.local/bin/assist", chatCallback, {'prompt', prompt})
+  end
+
+  runAITool(".local/bin/listen", sendChat)
 end)
 
 -- Set focused window to full screen

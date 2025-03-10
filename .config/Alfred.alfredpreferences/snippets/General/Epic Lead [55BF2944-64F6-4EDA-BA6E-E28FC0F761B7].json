@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "This is a placeholder card for tracking development lead work on an epic. Specific work should be carded out, but this is both an indicator (who is the lead) on our Kanban, as well as a callout that leading does include work!",
+    "uid" : "55BF2944-64F6-4EDA-BA6E-E28FC0F761B7",
+    "name" : "Epic Lead",
+    "keyword" : "lead"
+  }
+}

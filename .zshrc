@@ -5,6 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 #export PATH=$PATH:~/Library/Python/3.9/bin
 export PYTHONPATH=~/Library/Python/3.8/lib/python/site-packages
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/.local/bin
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -112,3 +113,6 @@ bindkey -v
 bindkey '^R' history-incremental-search-backward
 
 source ~/.heroku-aliases.sh
+
+# Created by `pipx` on 2024-10-25 11:57:35
+export PATH="$PATH:/Users/joseph.wegner/.local/bin"

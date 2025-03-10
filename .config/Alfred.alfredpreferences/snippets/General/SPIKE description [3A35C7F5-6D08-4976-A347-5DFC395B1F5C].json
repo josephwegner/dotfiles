@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "This is a WI to track the design effort around the parent epic. The output of this card should include sub-epics created or work items created within this existing epic. If there are other teams involved, scoping discussions should happen with them, and TDs created where appropriate. When this WI is closed, we should have a good sense of the work involved to complete this epic, and a rough sense of how long that work will take to complete.",
+    "uid" : "3A35C7F5-6D08-4976-A347-5DFC395B1F5C",
+    "name" : "SPIKE description",
+    "keyword" : "spike"
+  }
+}

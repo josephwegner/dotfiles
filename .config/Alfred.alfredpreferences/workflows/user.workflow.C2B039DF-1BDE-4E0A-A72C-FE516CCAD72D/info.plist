@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>5C509389-E0E3-41B0-A3E2-64726E4EB5C2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5D46A0E3-8A8A-4670-8E88-964B44281E10</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>5D46A0E3-8A8A-4670-8E88-964B44281E10</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A03AB795-7C39-4D16-AC5B-D7C9DEEF04A2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A03AB795-7C39-4D16-AC5B-D7C9DEEF04A2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CEB9DF49-9CA0-4229-882F-E19F566D67FA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string></string>
+	<key>description</key>
+	<string>Expand CT timezones to be inclusive of the team</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Timezone Expander</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>keyword</key>
+				<string>tz</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.snippet</string>
+			<key>uid</key>
+			<string>5C509389-E0E3-41B0-A3E2-64726E4EB5C2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>subtext</key>
+				<string>Enter the time, in military time (ie: 13:45)</string>
+				<key>text</key>
+				<string>What time?</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>5D46A0E3-8A8A-4670-8E88-964B44281E10</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require 'time'
+
+tzs = {
+	"UTC" =&gt; "+00:00",
+	"PDT" =&gt; "-07:00",
+	"CDT" =&gt; "-05:00",
+	"EDT" =&gt; "-04:00",
+	"ART" =&gt; "-03:00"
+}
+	
+
+time = Time.parse(ARGV[0])
+times = []
+
+tzs.keys.each { |tz| 
+	offset = tzs[tz]
+	times.push("#{time.localtime(offset).strftime("%H:%M")} #{tz}")
+}
+
+print times.join(" / ")</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>A03AB795-7C39-4D16-AC5B-D7C9DEEF04A2</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>CEB9DF49-9CA0-4229-882F-E19F566D67FA</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>5C509389-E0E3-41B0-A3E2-64726E4EB5C2</key>
+		<dict>
+			<key>xpos</key>
+			<integer>25</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
+		<key>5D46A0E3-8A8A-4670-8E88-964B44281E10</key>
+		<dict>
+			<key>xpos</key>
+			<integer>190</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
+		<key>A03AB795-7C39-4D16-AC5B-D7C9DEEF04A2</key>
+		<dict>
+			<key>xpos</key>
+			<integer>385</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
+		<key>CEB9DF49-9CA0-4229-882F-E19F566D67FA</key>
+		<dict>
+			<key>xpos</key>
+			<integer>585</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
