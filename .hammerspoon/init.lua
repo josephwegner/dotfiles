@@ -91,13 +91,13 @@ for k, id in ipairs(appHotkeys) do
   end)
 end
 
-
+AI_PATH = "/Users/joseph.wegner/.pyenv/shims"
 runAITool = function(runPath, callback, args)
   if args == nil then
     args = {}
   end
 
-  print("Run AI Tool: " .. home .. '/' .. runPath .. ' -- ' .. hs.inspect(args))
+  print("Run AI Tool: " .. AI_PATH .. '/' .. runPath .. ' -- ' .. hs.inspect(args))
 
   transcribedText = ""
 
@@ -108,7 +108,7 @@ runAITool = function(runPath, callback, args)
   end
 
   local task = hs.task.new(
-    home .. '/' .. runPath,
+    AI_PATH .. '/' .. runPath,
     function(exitCode, stdOut, stdErr)
       if exitCode == 0 then
         -- Only send the chat when the process completes successfully
@@ -136,10 +136,11 @@ hs.hotkey.bind({"cmd"}, "m", function()
   end
   
   local sendChat = function(prompt)
-    runAITool("/.local/bin/assist", chatCallback, {'prompt', prompt})
+    hs.notify.show("Local AI Utils", "", "Prompting...")
+    runAITool("assist", chatCallback, {'prompt', prompt})
   end
 
-  runAITool(".local/bin/listen", sendChat)
+  runAITool("listen", sendChat)
 end)
 
 -- Set focused window to full screen

@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-ignore_files=". .. .git .make.sh"           # list of files/folders to ignore, and not symlink
+ignore_files=". .. .git .make.sh README.md .DS_Store"           # list of files/folders to ignore, and not symlink
 
 ##########
 

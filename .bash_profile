@@ -18,3 +18,8 @@ alias gpom="git pull origin master"
 alias gpum="git pull upstream master"
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
+. "$HOME/.cargo/env"
+
+# Initialize Starship prompt
+eval "$(starship init bash)"
+export STARSHIP_CONFIG="$HOME/.config/starship.toml"
