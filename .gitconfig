@@ -12,3 +12,7 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[url "https://github.com/heroku/"]
+	insteadOf = git@github.com:heroku/
+[credential "https://git.heroku.com"]
+	helper = !heroku git:credentials
